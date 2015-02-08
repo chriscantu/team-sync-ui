@@ -1,15 +1,12 @@
-export class Welcome{
-  constructor(){
-    this.heading = 'Welcome to the Aurelia Navigation App!';
-    this.firstName = 'John';
-    this.lastName = 'Doe';
-  }
+export class Welcome {
+    constructor(){
+        this.heading = 'Welcome to Team Sync!';
+        this.newTask = {};
+        this.tasks = [{description:'Testing'}, {description: 'Second Test'}];
+    }
 
-  get fullName(){
-    return `${this.firstName} ${this.lastName}`;
-  }
-
-  welcome(){
-    alert(`Welcome, ${this.fullName}!`);
-  }
+    addTask() {
+        this.tasks.push(this.newTask);
+        this.newTask = {description:''};
+    }
 }
