@@ -11,9 +11,22 @@
         </form>
         <div class="row">
             <div class="small-6 large-12 columns">
-                <ul repeat.for="task of tasks">
-                    <li>${task.description}</li>
-                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th width="1000">Task</th>
+                            <th width="150">Finished</th>
+                            <th width="150">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr repeat.for="task of tasks">
+                            <td>${task.description}</td>
+                            <td><input type="checkbox" value.bind="task.isFinished" click.delegate="deleteTask()"></td>
+                            <td><button class="button alert small" type="text" name="deleteTask" click.delegate="deleteTask()">Delete</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

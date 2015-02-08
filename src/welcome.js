@@ -9,4 +9,8 @@ export class Welcome {
         this.tasks.push(this.newTask);
         this.newTask = {description:''};
     }
+
+    deleteTask() {
+        console.log("Deleting");
+    }
 }
