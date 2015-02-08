@@ -1,6 +1,6 @@
 export class Today {
     constructor(){
-        this.heading = 'Today\'s Status';
+        this.heading = 'My Status';
         this.newTask = {};
         this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
         this.savedTasks = true;
