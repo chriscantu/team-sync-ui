@@ -14,6 +14,7 @@ export class Today {
 
     deleteTask(task) {
         if(confirm('Are you sure you want to delete this task?')) {
+            this.savedTasks = false;
             this.tasks.pop(task);
         }
     }
