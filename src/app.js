@@ -8,8 +8,8 @@ export class App {
       config.title = 'Team Sync';
       config.map([
         { route: ['','today'], moduleId: 'today', nav: true, title:'Today\'s Status' },
+        { route: 'team',       moduleId: 'teamStatus', nav: true, title: 'Team Status'},
         { route: 'flickr',       moduleId: 'flickr',  nav: true }
-
       ]);
     });
   }

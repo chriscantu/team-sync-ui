@@ -3,7 +3,7 @@ export class Today {
         this.heading = 'Today\'s Status';
         this.newTask = {};
         this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
-        this.savedTasks = false;
+        this.savedTasks = true;
     }
 
     addTask() {
