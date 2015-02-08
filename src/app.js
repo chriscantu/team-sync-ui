@@ -7,7 +7,7 @@ export class App {
     this.router.configure(config => {
       config.title = 'Team Sync';
       config.map([
-        { route: ['','welcome'], moduleId: 'welcome', nav: true, title:'Welcome' },
+        { route: ['','today'], moduleId: 'today', nav: true, title:'Today\'s Status' },
         { route: 'flickr',       moduleId: 'flickr',  nav: true }
 
       ]);
