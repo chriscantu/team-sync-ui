@@ -1,16 +1,34 @@
 export class Welcome {
     constructor(){
-        this.heading = 'Welcome to Team Sync!';
+        this.heading = 'Today\'s Tasks';
         this.newTask = {};
-        this.tasks = [{description:'Testing'}, {description: 'Second Test'}];
+        this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
+        this.savedTasks = false;
     }
 
     addTask() {
         this.tasks.push(this.newTask);
         this.newTask = {description:''};
+        this.savedTasks = false;
     }
 
-    deleteTask() {
-        console.log("Deleting");
+    deleteTask(task) {
+        if(confirm('Are you sure you want to delete this task?')) {
+            this.tasks.pop(task);
+        }
+    }
+
+    saveTasks() {
+        if (this.newTask.description) {
+            this.addTask();
+        }
+        this.savedTasks = true;
+        console.log('Saving Tasks', this.tasks);
+    }
+
+    canDeactivate() {
+        if (!this.savedTasks) {
+            return confirm('You have not saved your tasks. Are you sure you want to leave?');
+        }
     }
 }
