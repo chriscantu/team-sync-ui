@@ -24,7 +24,7 @@ export class Today {
             this.addTask();
         }
         this.savedTasks = true;
-        console.log('Saving Tasks', this.tasks);
+        alert('Tasks saved');
     }
 
     canDeactivate() {
