@@ -4,6 +4,9 @@
         <form role="form" submit.delegate="addTask()" >
             <div class="row">
                 <div class="small-6 large-12 columns">
+                    <div data-alert class="alert-box warning" show.bind="!savedTasks">
+                        Tasks need to be saved.
+                    </div>
                     <label for="task">Task:</label>
                     <input type="text" name="task" value.bind="newTask.description" autofocus>
                 </div>

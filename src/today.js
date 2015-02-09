@@ -23,8 +23,8 @@ export class Today {
         if (this.newTask.description) {
             this.addTask();
         }
+
         this.savedTasks = true;
-        alert('Tasks saved');
     }
 
     canDeactivate() {
