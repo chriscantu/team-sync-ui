@@ -1,5 +1,9 @@
+import lodash from 'lodash-node';
+var _ = lodash;
+
 export class Today {
-    constructor(){
+
+    constructor() {
         this.heading = 'My Status';
         this.newTask = {};
         this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
@@ -15,7 +19,10 @@ export class Today {
     deleteTask(task) {
         if(confirm('Are you sure you want to delete this task?')) {
             this.savedTasks = false;
-            this.tasks.pop(task);
+
+            _.remove(this.tasks, function (tsk) {
+                return tsk == task;
+            });
         }
     }
 

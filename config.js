@@ -17,6 +17,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.3.0",
     "foundation": "github:zurb/bower-foundation@5.5.1",
     "lodash": "npm:lodash@3.1.0",
+    "lodash-node": "npm:lodash-node@3.1.0",
     "moment": "npm:moment@2.9.0",
     "github:aurelia/binding@0.3.3": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.4.2",
@@ -106,6 +107,9 @@ System.config({
       "process": "npm:process@0.10.0"
     },
     "npm:core-js@0.4.10": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:lodash-node@3.1.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:lodash@3.1.0": {
