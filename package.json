@@ -52,7 +52,9 @@
       "aurelia-http-client": "^0.4.4",
       "aurelia-router": "^0.5.1",
       "font-awesome": "^4.3.0",
-      "foundation": "^5.5.1"
+      "foundation": "^5.5.1",
+      "lodash": "npm:lodash@^3.1.0",
+      "moment": "npm:moment@^2.9.0"
     }
   },
   "dependencies": {}
