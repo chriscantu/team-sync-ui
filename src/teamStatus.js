@@ -1,11 +1,19 @@
-import moment from 'moment';
+import m from 'moment';
+
+m.locale('en', {
+    calendar: {
+        lastDay: '[Yesterday]',
+        sameDay: '[Today]'
+    }
+});
+
+var moment = m();
 
 export class TeamStatus {
-    static inject() { return [moment]; }
 
-    constructor(moment) {
+    constructor() {
         this.heading = 'Team Status';
-        this.statusDate = moment.format('dddd');
+        this.statusDate = moment.calendar();
 
         this.team = [
             { firstName: 'Andrew', lastName: 'Y.', tasks: [{description:'Tests', isFinished: false } ] },
