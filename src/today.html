@@ -32,7 +32,7 @@
                     <tbody>
                         <tr repeat.for="task of tasks">
                             <td>${task.description}</td>
-                            <td><input type="checkbox" value.bind="task.isFinished"></td>
+                            <td><input type="checkbox" checked.bind="task.isFinished" change.delegate="$parent.setSavedTasks(false)"></td>
                             <td><button class="button alert tiny" type="text" name="deleteTask" click.trigger="$parent.deleteTask(task)">Delete</td>
                         </tr>
                     </tbody>

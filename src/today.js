@@ -26,6 +26,10 @@ export class Today {
         }
     }
 
+    setSavedTasks(state) {
+        this.savedTasks = state;
+    }
+
     saveTasks() {
         if (this.newTask.description) {
             this.addTask();
