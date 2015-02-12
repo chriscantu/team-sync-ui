@@ -1,5 +1,16 @@
 import lodash from 'lodash-node';
 var _ = lodash;
+import m from 'moment';
+
+m.locale('en', {
+    calendar: {
+        lastDay: '[Yesterday]',
+        sameDay: '[Today]'
+    }
+});
+
+var moment = m();
+
 
 export class Today {
 
@@ -8,6 +19,7 @@ export class Today {
         this.newTask = {};
         this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
         this.savedTasks = true;
+        this.statusDate = moment.calendar();
     }
 
     addTask() {
