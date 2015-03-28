@@ -3,7 +3,7 @@ Team Sync UI
 ============
 
 ## Overview
-Simple UI for communicating what a team is working on.  This project is meant to work in conjuction with http://github.com:chriscantu/team-sync-api-js.git.  
+Simple UI for communicating what a team is working on.  This project is meant to work in conjuction with http://github.com/chriscantu/team-sync-api-js.  
 
 ## Environment Setup
 * `npm install -g gulp jspm`
