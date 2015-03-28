@@ -41,6 +41,7 @@
     "karma-jasmine": "^0.3.2",
     "karma-jspm": "^1.0.1",
     "object.assign": "^1.0.3",
+    "proxy-middleware": "^0.11.0",
     "run-sequence": "^1.0.2",
     "vinyl-paths": "^1.0.0"
   },

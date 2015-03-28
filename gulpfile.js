@@ -16,6 +16,8 @@ var plumber = require('gulp-plumber');
 var tools = require('aurelia-tools');
 var protractor = require("gulp-protractor").protractor;
 var webdriver_update = require('gulp-protractor').webdriver_update;
+var proxy = require('proxy-middleware');
+var url = require('url');
 
 var path = {
   source:'src/**/*.js',
@@ -142,15 +144,15 @@ gulp.task('build-dev-env', function () {
 });
 
 gulp.task('serve', ['build'], function(done) {
+  var options = url.parse('http://localhost:3000/');
+  options.route = '/api';
+
   browserSync({
     open: false,
     port: 9000,
     server: {
       baseDir: ['.'],
-      middleware: function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        next();
-      }
+      middleware: [proxy(options)]
     }
   }, done);
 });
