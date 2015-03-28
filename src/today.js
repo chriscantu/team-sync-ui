@@ -1,4 +1,5 @@
 import lodash from 'lodash-node';
+import {HttpClient} from 'aurelia-http-client';
 var _ = lodash;
 import m from 'moment';
 
@@ -14,10 +15,13 @@ var moment = m();
 
 export class Today {
 
-    constructor() {
+    static inject() { return [HttpClient]; }
+
+    constructor(http) {
+        this.http = http;
         this.heading = 'My Status';
         this.newTask = {};
-        this.tasks = [{description:'Testing', isFinished: true}, {description: 'Second Test', isFinished: false}];
+        this.tasks = [];
         this.savedTasks = true;
         this.statusDate = moment.calendar();
     }
@@ -48,6 +52,18 @@ export class Today {
         }
 
         this.savedTasks = true;
+    }
+
+    activate(params) {
+        if (!params) {
+            //hardcoding default params until session & date is implemented
+            params = {username: 'chriscantu', statusDate: '2015-04-01'};
+        }
+
+        return this.http.get(`/api/status/${params.username}/${params.statusDate}`).then( result => {
+            var response = JSON.parse(result.response);
+            this.tasks = response.statuses;
+        });
     }
 
     canDeactivate() {
