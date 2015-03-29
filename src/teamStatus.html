@@ -22,9 +22,9 @@
                             <th width="150">Finished</th>
                         </tr>
                     </thead>
-                    <tbody repeat.for="user of team">
-                        <tr repeat.for="task of user.tasks">
-                            <td>${$parent.user.firstName} ${$parent.user.lastName}</td>
+                    <tbody >
+                        <tr repeat.for="task of team">
+                            <td>${task.username}</td>
                             <td>
                                 ${task.description}
                             </td>

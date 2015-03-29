@@ -55,7 +55,7 @@ export class Today {
     }
 
     activate(params) {
-        if (!params) {
+        if (_.isEmpty()) {
             //hardcoding default params until session & date is implemented
             params = {username: 'chriscantu', statusDate: '2015-04-01'};
         }
