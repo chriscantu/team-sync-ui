@@ -12,7 +12,6 @@ m.locale('en', {
 
 var moment = m();
 
-
 export class Today {
 
     static inject() { return [HttpClient]; }
@@ -22,13 +21,19 @@ export class Today {
         this.heading = 'My Status';
         this.newTask = {};
         this.tasks = [];
-        this.savedTasks = true;
         this.statusDate = moment.calendar();
+        this.params = {};
     }
 
     addTask() {
-        this.tasks.push(this.newTask);
-        this.newTask = {description:''};
+        var task = _.merge(this.params, this.newTask);
+        this.http.request
+            .withHeader('Content-Type', 'application/json')
+            .post(`/api/status`, task).then( result => {
+                this.newTask = {description:''};
+                this.tasks.push(JSON.parse(result.response));
+        });
+
         this.savedTasks = false;
     }
 
@@ -36,22 +41,20 @@ export class Today {
         if(confirm('Are you sure you want to delete this task?')) {
             this.savedTasks = false;
 
-            _.remove(this.tasks, function (tsk) {
-                return tsk == task;
+            this.http.delete(`/api/status/${task.id}`).then( result => {
+                _.remove(this.tasks, function (tsk) {
+                    return tsk == task;
+                });
             });
         }
     }
 
-    setSavedTasks(state) {
-        this.savedTasks = state;
-    }
-
-    saveTasks() {
-        if (this.newTask.description) {
-            this.addTask();
-        }
-
-        this.savedTasks = true;
+    toggleFinished(task) {
+        this.http.request
+            .withHeader('Content-Type', 'application/json')
+            .put(`/api/status/${task.id}`, task).then( result => {
+                task = JSON.parse(result.response);
+        });
     }
 
     activate(params) {
@@ -59,6 +62,8 @@ export class Today {
             //hardcoding default params until session & date is implemented
             params = {username: 'chriscantu', statusDate: '2015-04-01'};
         }
+
+        this.params = params;
 
         return this.http.get(`/api/status/${params.username}/${params.statusDate}`).then( result => {
             var response = JSON.parse(result.response);
