@@ -38,8 +38,6 @@ export class Today {
 
     deleteTask(task) {
         if(confirm('Are you sure you want to delete this task?')) {
-            this.savedTasks = false;
-
             this.http.delete(`/api/status/${task.id}`).then( result => {
                 _.remove(this.tasks, function (tsk) {
                     return tsk == task;
