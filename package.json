@@ -47,16 +47,20 @@
   },
   "jspm": {
     "dependencies": {
-      "aurelia-bootstrapper": "^0.9.1",
-      "aurelia-dependency-injection": "^0.4.1",
-      "aurelia-framework": "^0.8.4",
-      "aurelia-http-client": "^0.5.3",
-      "aurelia-router": "^0.5.1",
-      "font-awesome": "^4.3.0",
-      "foundation": "^5.5.1",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.9.1",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.4.1",
+      "aurelia-framework": "github:aurelia/framework@^0.8.4",
+      "aurelia-http-client": "github:aurelia/http-client@^0.5.3",
+      "aurelia-router": "github:aurelia/router@^0.5.1",
+      "font-awesome": "npm:font-awesome@^4.3.0",
+      "foundation": "github:zurb/bower-foundation@^5.5.1",
       "lodash": "npm:lodash@^3.1.0",
       "lodash-node": "npm:lodash-node@^3.1.0",
       "moment": "npm:moment@^2.9.0"
+    },
+    "devDependencies": {
+      "traceur": "github:jmcriffey/bower-traceur@0.0.87",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87"
     }
   },
   "dependencies": {}
