@@ -27,14 +27,13 @@ export class Today {
 
     addTask() {
         var task = _.merge(this.params, this.newTask);
+        task.teamName = 'encoreui'; //TODO:  Hardcoding until auth is implemented
         this.http.request
             .withHeader('Content-Type', 'application/json')
             .post(`/api/status`, task).then( result => {
                 this.newTask = {description:''};
                 this.tasks.push(JSON.parse(result.response));
         });
-
-        this.savedTasks = false;
     }
 
     deleteTask(task) {
@@ -69,11 +68,5 @@ export class Today {
             var response = JSON.parse(result.response);
             this.tasks = response.statuses;
         });
-    }
-
-    canDeactivate() {
-        if (!this.savedTasks) {
-            return confirm('You have not saved your tasks. Are you sure you want to leave?');
-        }
     }
 }
