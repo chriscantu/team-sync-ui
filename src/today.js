@@ -1,4 +1,4 @@
-import lodash from 'lodash-node';
+import lodash from 'lodash';
 import {HttpClient} from 'aurelia-http-client';
 var _ = lodash;
 import m from 'moment';
@@ -17,7 +17,10 @@ export class Today {
     static inject() { return [HttpClient]; }
 
     constructor(http) {
-        this.http = http;
+        this.http = new HttpClient().configure( x => {
+            x.withHeader('Content-Type', 'application/json');
+        });
+
         this.heading = 'My Status';
         this.newTask = {};
         this.tasks = [];
@@ -28,8 +31,7 @@ export class Today {
     addTask() {
         var task = _.merge(this.params, this.newTask);
         task.teamName = 'encoreui'; //TODO:  Hardcoding until auth is implemented
-        this.http.request
-            .withHeader('Content-Type', 'application/json')
+        this.http
             .post(`/api/status`, task).then( result => {
                 this.newTask = {description:''};
                 this.tasks.push(JSON.parse(result.response));
@@ -47,8 +49,7 @@ export class Today {
     }
 
     toggleFinished(task) {
-        this.http.request
-            .withHeader('Content-Type', 'application/json')
+        this.http
             .put(`/api/status/${task.id}`, task).then( result => {
                 task = JSON.parse(result.response);
         });
